@@ -1,47 +1,57 @@
 package com.company;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class Main {
 
 
-    static int exTest() {
+    static float exTest() throws IllegalArgumentException, IOException
+    {
+        if (true)
+            throw new IllegalArgumentException("qqqq");
+
         float c = 0;
         try {
             c = 0 / .0F;
-            c = 0 / 0;
-            c++;
-            c++;
+            //c = 0 / 0;
             c++;
             c++;
         }
+//        catch (RuntimeException e)
+//        {
+//            c = 11;
+//        }
         catch (ArithmeticException e)
         {
-            return 10; // 10 will be returned
+            //if (true)
+            //    throw new NullPointerException("qqq");
+            c = 111;
+
+            //return 10; // 10 will be returned
         }
-        catch (RuntimeException e)
-        {
-            c = 11;
-        }
-        catch (Exception e)
-        {
-            c = 12;
-        }
+//        catch (Exception e)
+//        {
+//            c = 12;
+//        }
         catch (Throwable e)
         {
             c = 13;
         }
         finally
         {
-            //try {
-            throw new NullPointerException("qqq");
-            //}
-            //catch(Exception ex) {
-            //    return 100;
-            //}
+//            //try {
+//            if (true)
+//                throw new NullPointerException("qqq");
+//            //}
+//            //catch(Exception ex) {
+//            //    return 100;
+//            //}
 
             //return; // !!!!!!!! Ловить не надо! )))))))))))) Все работает
         }
 
-        //return a;
+        return c;
     }
 
 
@@ -76,7 +86,8 @@ public class Main {
 
     public static String exTest2() {
         try {
-            int c = 1 / 0;
+            int c = (int)(1 / .0F);
+            c = 1 / 0;
             return "SomeString";
         }
         catch(Exception ex) {
@@ -91,5 +102,13 @@ public class Main {
 
     public static void main(String[] args) {
         String s = exTest2();
+
+        try {
+            exTest();
+        }
+        catch (IOException e) {
+            int a = 1;
+        }
+
     }
 }
